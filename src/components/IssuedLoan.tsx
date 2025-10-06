@@ -36,15 +36,15 @@ const IssuedLoansComponent: React.FC = () => {
 
       const loansData = await contract.getAllLoans();
 
-      // Filter loans by sender address (issued by the connected user)
+      // Filter loans by lender address (issued by the connected user)
       const issuedLoans = loansData.filter(
         (loan: any) =>
-          address && loan.sender.toLowerCase() === address.toLowerCase()
+          address && loan.lender.toLowerCase() === address.toLowerCase()
       );
 
       const formattedLoans = issuedLoans.map((loan: any) => ({
         loanId: loan.loanId,
-        receiver: loan.receiver,
+        receiver: loan.borrower,
         amount: formatUnits(loan.amount, 18),
         interestRate: loan.interestRate.toString(),
         balance: formatUnits(loan.balance, 18),

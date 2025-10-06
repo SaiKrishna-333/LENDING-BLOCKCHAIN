@@ -18,7 +18,6 @@ import IssuedLoansComponent from "@/components/IssuedLoan";
 import { contractAbi } from "@/abi";
 
 export default function CardWithForm() {
-  const [receiver, setReceiver] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [interestRate, setInterestRate] = useState<string>("");
   const [loanTerm, setLoanTerm] = useState<string>("");
@@ -47,10 +46,9 @@ export default function CardWithForm() {
         signer
       );
 
-      const tx = await contract.issueLoan(
-        receiver,
+      const tx = await contract.requestLoan(
         ethers.parseEther(amount),
-        parseInt(interestRate),
+        ethers.parseEther(interestRate),
         parseInt(loanTerm)
       );
 
@@ -58,7 +56,6 @@ export default function CardWithForm() {
       alert("Loan issued successfully!");
 
       // Clear form fields after successful submission
-      setReceiver("");
       setAmount("");
       setInterestRate("");
       setLoanTerm("");
@@ -81,17 +78,6 @@ export default function CardWithForm() {
         <CardContent>
           <form onSubmit={handleIssueLoan}>
             <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="receiver">Receiver Address</Label>
-                <Input
-                  id="receiver"
-                  type="text"
-                  placeholder="0x..."
-                  value={receiver}
-                  onChange={(e) => setReceiver(e.target.value)}
-                  required
-                />
-              </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="amount">Loan Amount (ETH)</Label>
                 <Input

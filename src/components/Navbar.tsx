@@ -41,6 +41,13 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
       ),
     },
     {
+      label: "approve-loans",
+      href: "/approve-loans",
+      icon: (
+        <Banknote className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
       label: "borrower-loan",
       href: "/borrower-loan",
       icon: (
@@ -57,6 +64,20 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
     {
       label: "account",
       href: "/account",
+      icon: (
+        <Banknote className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "collateral",
+      href: "/collateral",
+      icon: (
+        <Banknote className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "validator-approvals",
+      href: "/validator-approvals",
       icon: (
         <Banknote className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),

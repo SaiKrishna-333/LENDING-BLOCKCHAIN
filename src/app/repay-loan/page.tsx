@@ -43,10 +43,9 @@ export default function RepayLoanCard() {
         signer
       );
 
-      const tx = await contract.repayLoan(
-        loanId,
-        ethers.parseEther(repayAmount)
-      );
+      const tx = await contract.repayLoan(loanId, {
+        value: ethers.parseEther(repayAmount),
+      });
 
       await tx.wait();
       alert("Loan repaid successfully!");
